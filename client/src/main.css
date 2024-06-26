@@ -42,3 +42,38 @@ button{
 h3{
     text-align: center;
 }
+
+.list-container{
+    width: 500px;
+    height: auto;
+    padding: 10px;
+    margin: auto;
+    border: solid grey .1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.table-container{
+    margin-top: 5px;
+    padding: 10px;
+}
+
+table{
+    border: solid gray .1px;
+    border-collapse: collapse;
+}
+
+td, th{
+    border: solid grey .1px;
+    padding: 5px;
+}
+
+.actions{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* border: solid; */
+    padding: 3px;
+}
+
