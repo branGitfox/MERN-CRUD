@@ -5,6 +5,7 @@ const UserList = () => {
     return (
         <div className='list-container'>
             <h3>List of User</h3>
+            <Link to={'createUser'}><button>New</button></Link>
             <div className="table-container">
                 <table>
                   <thead>
