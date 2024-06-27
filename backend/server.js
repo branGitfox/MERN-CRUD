@@ -9,7 +9,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 dotenv.config()
-const PORT = process.env.PORT||7000
+const PORT = process.env.PORT || 8000
 const URL = process.env.MONGO_URI
 
 

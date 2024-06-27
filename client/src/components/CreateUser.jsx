@@ -14,9 +14,10 @@ const CreateUser = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await axios.post('http://localhost:8000/api/createUser', userInfo).then(res => {
-            
+            toast.info(res.data)
+            navigate('/')
         }).catch(err => toast.error(err.message))
-        navigate('/')
+        
     }
 
     return (
@@ -27,7 +28,7 @@ const CreateUser = () => {
                     
                     <div>
                         <label htmlFor="name">Name</label>
-                        <input id='name' type="text" name='name' onChange={handleChange}/>
+                        <input id='name' type="text" name='fname' onChange={handleChange}/>
                     </div>
                     <div>
                         <label htmlFor="email">Email</label>

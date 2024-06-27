@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaTrash, FaUpload } from 'react-icons/fa';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 const UserList = () => {
+    const[userList, setUserList] = useState([])
+    const [isLoading, setIsLoading]= useState(true)
+
+   
+
+    useEffect(() => {
+        const getUsers = async () => {
+            const response = await axios.get('http://localhost:8000/api/getUsers').catch(err => toast.error(err.message))
+                 setUserList(response.data)
+                 setIsLoading(false)
+         
+         }
+        getUsers()
+    }, [])
+
+  
+
+   
+    console.log(userList);
     return (
+        <>
         <div className='list-container'>
             <h3>List of User</h3>
             <Link to={'createUser'}><button>New</button></Link>
-            <div className="table-container">
+            {isLoading? <p>Loading..</p>:(<div className="table-container">
                 <table>
                   <thead>
                     <tr>
@@ -16,15 +38,26 @@ const UserList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                        <tr>
-                            <td>Ravomanana</td>
-                            <td>Brandon Fidelin</td>
-                            <td className='actions'><Link to="/delete/1"><FaTrash fill='red'/></Link><Link to="/delete/1"><FaUpload fill='green'/></Link></td>
+                    {userList && userList.map((user, index) => (
+                          <tr key={index}>
+                            <td>{user.fname}</td>
+                            <td>{user.email}</td>
+                            <td className='actions'><Link to={`/deleteUser/`+user._id}><FaTrash  fill='red'/></Link><Link to={`/deleteUser/`+user._id}><FaUpload fill='green'/></Link></td>
                         </tr>
+                    ))}
+                  
+                      
                   </tbody>
                 </table>
-            </div>
+            </div>)
+            
+            
+            
+            }
+            
+            <ToastContainer />
         </div>
+        </>
     );
 }
 

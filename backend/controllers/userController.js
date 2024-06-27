@@ -14,3 +14,34 @@ export const createUser = async (req,res, next) => {
     }
 
 }
+
+export const getUsers = async (req,res, next) => {
+    try{
+        const userData =await User.find()
+        if(!userData){
+            return res.status(404).json({message:"no user yet"})
+        }
+       
+        res.status(200).json(userData)
+    }catch(err){
+        next(err)
+    }
+
+}
+
+
+export const deleteUser = async (req,res, next) => {
+    try{
+        const id= req.params.id
+        const userData =await User.findById(id)
+        if(!userData){
+            return res.status(404).json({message:" user doesn't exist"})
+        }
+       
+        await User.findByIdAndDelete(id)
+    }catch(err){
+        next(err)
+    }
+
+}
+
