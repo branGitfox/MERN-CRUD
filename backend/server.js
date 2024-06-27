@@ -3,13 +3,16 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
-dotenv.config()
-const app = express()
-const PORT = process.env.PORT || 8000
-const URL = process.env.MONGO_URI
+import route from './routers/userRouter.js'
 
+const app = express()
 app.use(bodyParser.json())
 app.use(cors())
+dotenv.config()
+const PORT = process.env.PORT||7000
+const URL = process.env.MONGO_URI
+
+
 
 mongoose.connect(URL).then(() => {
     console.log('connected')
@@ -17,5 +20,8 @@ mongoose.connect(URL).then(() => {
         console.log(`running on http://localhost:${PORT}`);
     })
 }).catch(err => console.log(err.message))
+
+app.use('/api', route)
+app.get('/', (req, res) => console.log(req.url))
 
 
