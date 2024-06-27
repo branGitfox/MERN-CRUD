@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { BarLoader,DoubleBubble, SlidingPebbles } 
+from 'react-spinner-animated';
+import 'react-spinner-animated/dist/index.css'
 import { Link } from 'react-router-dom';
 import { FaTrash, FaUpload } from 'react-icons/fa';
 import axios from 'axios';
@@ -28,7 +31,10 @@ const UserList = () => {
         <div className='list-container'>
             <h3>List of User</h3>
             <Link to={'createUser'}><button>New</button></Link>
-            {isLoading? <p>Loading..</p>:(<div className="table-container">
+            {isLoading? 
+            (<DoubleBubble text={"Loading..."} bgColor={"#F0A500"} 
+            center={false} width={"150px"} height={"150px"}/>):
+            (<div className="table-container">
                 <table>
                   <thead>
                     <tr>
@@ -42,7 +48,7 @@ const UserList = () => {
                           <tr key={index}>
                             <td>{user.fname}</td>
                             <td>{user.email}</td>
-                            <td className='actions'><Link to={`/deleteUser/`+user._id}><FaTrash  fill='red'/></Link><Link to={`/deleteUser/`+user._id}><FaUpload fill='green'/></Link></td>
+                            <td className='actions'><Link to={`/deleteUser/`+user._id}><FaTrash  fill='red'/></Link><Link to={`/updateUser/`+user._id}><FaUpload fill='green'/></Link></td>
                         </tr>
                     ))}
                   
