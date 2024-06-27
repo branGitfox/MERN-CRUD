@@ -23,9 +23,6 @@ const UserList = () => {
     }, [])
 
   
-
-   
-    console.log(userList);
     return (
         <>
         <div className='list-container'>

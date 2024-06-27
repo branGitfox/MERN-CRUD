@@ -32,11 +32,11 @@ const UpdateUser = () => {
         await axios.put('http://localhost:8000/api/updateUser/'+id, userInfo).then(res => {
             setIsLoading(false)
             
-        }).catch(err => toast.error(err.message))
-        Navigate('/')
+        }).then(() =>Navigate('/')).catch(err => toast.error(err.message))
+        
     }
 
-    console.log(userInfo);
+
     return (
         <>
         <div>
