@@ -4,6 +4,7 @@ import UserList from './components/UserList'
 import NotFound from './components/NotFound'
 import CreateUser from './components/CreateUser'
 import DeleteUser from './components/deleteUser'
+import UpdateUser from './components/UpdateUser'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -14,6 +15,7 @@ function App() {
               <Route path='/' element={<UserList/>}/>
               <Route path='/createUser' element={<CreateUser/>}/>
               <Route path='/deleteUser/:id' element={<DeleteUser/>}/>
+              <Route path='/updateUser/:id' element={<UpdateUser/>}/>
               <Route path='*' element={<NotFound/>}/>
           </Routes>
       </BrowserRouter>

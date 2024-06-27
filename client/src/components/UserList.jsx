@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BarLoader,DoubleBubble, SlidingPebbles } 
+import { DoubleBubble } 
 from 'react-spinner-animated';
 import 'react-spinner-animated/dist/index.css'
 import { Link } from 'react-router-dom';
